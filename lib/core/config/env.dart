@@ -21,4 +21,10 @@ class EnvValue {
     apiKey: "",
     environment: EnvDetails.dev(),
   );
+  static final Env production = Env(
+    baseUrl: "",
+    socketUrl: "",
+    apiKey: "",
+    environment: EnvDetails.prod(),
+  );
 }

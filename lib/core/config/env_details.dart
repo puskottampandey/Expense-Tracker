@@ -1,8 +1,4 @@
-enum AppEnvironment {
-  dev,
-  stage,
-  prod,
-}
+enum AppEnvironment { dev, stage, prod }
 
 class EnvDetails {
   final AppEnvironment appEnvironment;
@@ -43,6 +39,19 @@ class EnvDetails {
       appleStoreId: "",
       appBundleId: "",
       appEnvironment: AppEnvironment.dev,
+      appHomeTitle: "",
+      appHomeSubTitle: "",
+      appIcon: "",
+    );
+  }
+  factory EnvDetails.prod() {
+    return EnvDetails(
+      appTitle: "Expense [prod]",
+      versionName: "v.1.0.0",
+      appUpdateDate: "last updated at: 12th March, 2024",
+      appleStoreId: "",
+      appBundleId: "",
+      appEnvironment: AppEnvironment.prod,
       appHomeTitle: "",
       appHomeSubTitle: "",
       appIcon: "",
