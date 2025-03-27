@@ -1,14 +1,14 @@
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
+    id("com.android.application")
+    id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id "dev.flutter.flutter-gradle-plugin"
+    id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
     namespace = "com.example.expensetracker"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "27.0.12077973"
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -21,40 +21,13 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.expensetracker"
+           applicationId = "com.example.expensetracker"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-    }
-    flavorDimensions "app"
-     productFlavors {
-        
-
-        prod {
-            dimension "app"
-            applicationId "com.example.expensetracker"
-            versionCode 1
-            versionName "0.0.1"
-            resValue "string", "app_name", "Expense"
-        }
-        stage {
-            dimension "app"
-            applicationId "com.example.expensetracker"
-            versionCode 1
-            versionName "0.0.1"
-            resValue "string", "app_name", "Expense [stage]"
-        }
-        
-        dev {
-            dimension "app"
-            applicationId "com.example.expensetracker"
-            versionCode 1
-            versionName "0.0.1"
-            resValue "string", "app_name", "Expense [dev]"
-        }
     }
 
     buildTypes {
@@ -69,3 +42,4 @@ android {
 flutter {
     source = "../.."
 }
+

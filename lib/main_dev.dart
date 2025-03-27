@@ -6,23 +6,19 @@ import 'package:flutter/services.dart';
 
 import 'core/utils/log.dart';
 
-
 void main() async {
-  runZonedGuarded(() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]).then(
-      (_) {
-        runApp(
-          App(
-            env: EnvValue.development,
-          ),
-        );
-      },
-    );
-  }, (e, s) {
-    Log.e(e);
-    Log.d(s);
-  });
+  runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+      ]).then((_) {
+        runApp(App(env: EnvValue.development));
+      });
+    },
+    (e, s) {
+      Log.e(e);
+      Log.d(s);
+    },
+  );
 }

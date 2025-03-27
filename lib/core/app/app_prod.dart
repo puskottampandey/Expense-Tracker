@@ -7,10 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class App extends StatefulWidget {
   final Env env;
 
-  const App({
-    super.key,
-    required this.env,
-  });
+  const App({super.key, required this.env});
 
   @override
   State<App> createState() => _AppState();
@@ -24,7 +21,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return  UpdateWrapper(
+    return UpdateWrapper(
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
         minTextAdapt: true,
@@ -67,7 +64,6 @@ class _AppState extends State<App> {
         // child: child,
       ),
     );
-             
   }
 }
 // void main() {
