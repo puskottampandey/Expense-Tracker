@@ -66,28 +66,3 @@ class _AppState extends State<App> {
     );
   }
 }
-// void main() {
-//   runApp(
-//     const ProviderScope(
-//       child: MyApp(),
-//     ),
-//   );
-// }
-
-// class MyApp extends ConsumerWidget {
-//   const MyApp({super.key});
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     ref.watch(networkControllerProvider);
-//     return ScreenUtilInit(
-//         designSize: const Size(360, 690),
-//         minTextAdapt: true,
-//         splitScreenMode: true,
-//         builder: (_, child) {
-//           return MaterialApp.router(
-//             debugShowCheckedModeBanner: false,
-//             routerConfig: router,
-//           );
-//         });
-//   }
-// }

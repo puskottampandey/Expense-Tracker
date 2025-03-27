@@ -1,5 +1,3 @@
-import 'package:expensetracker/core/navigation/navigation_service.dart';
-import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/core/theme/app_theme.dart' show textTheme;
 import 'package:expensetracker/features/splash/widget/blur_circle_widget.dart';
