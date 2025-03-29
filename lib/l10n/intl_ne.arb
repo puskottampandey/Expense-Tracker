@@ -1,0 +1,11 @@
+{
+  "appTitle": "फ्लटर लोकलाइजेसन डेमो",
+  "hello": "नमस्ते संसार",
+  "greeting": "नमस्ते, {name}!",
+  "@greeting": {
+    "description": "नामसहितको अभिवादन सन्देश",
+    "placeholders": {
+      "name": {}
+    }
+  }
+}
