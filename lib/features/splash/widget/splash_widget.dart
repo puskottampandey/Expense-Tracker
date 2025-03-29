@@ -1,8 +1,6 @@
 import 'package:expensetracker/core/theme/app_colors.dart';
-import 'package:expensetracker/core/theme/app_theme.dart' show textTheme;
 import 'package:expensetracker/features/splash/widget/blur_circle_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashWidget extends StatefulWidget {
   const SplashWidget({super.key});
@@ -20,20 +18,23 @@ class _SplashWidgetState extends State<SplashWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        BlurCircleWidget(),
-        Center(
-          child: Text(
-            "Expense Tracker",
-            style: textTheme.bodyLarge!.copyWith(
-              fontSize: 32.sp,
-              fontWeight: FontWeight.bold,
-              color: kvverylightColor,
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    return Scaffold(
+      backgroundColor: AppColors.kPrimaryVoiletColor,
+      body: Stack(
+        children: [
+          BlurCircleWidget(),
+          Center(
+            child: Text(
+              "Expense Tracker",
+              style: textTheme.displayLarge!.copyWith(
+                color: AppColors.kvverylightColor,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

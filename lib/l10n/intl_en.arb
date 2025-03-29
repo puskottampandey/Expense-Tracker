@@ -1,0 +1,11 @@
+{
+  "appTitle": "Flutter Localization Demo",
+  "hello": "Hello World",
+  "greeting": "Hello, {name}!",
+  "@greeting": {
+    "description": "Greeting message with a name",
+    "placeholders": {
+      "name": {}
+    }
+  }
+}
