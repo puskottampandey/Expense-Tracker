@@ -1,6 +1,8 @@
+import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/features/splash/widget/blur_circle_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashWidget extends StatefulWidget {
   const SplashWidget({super.key});
@@ -10,10 +12,16 @@ class SplashWidget extends StatefulWidget {
 }
 
 class _SplashWidgetState extends State<SplashWidget> {
+  _navigator(String route) async {
+    context.go(route);
+  }
+
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).then((value) {});
+    Future.delayed(const Duration(seconds: 2)).then((value) {
+      _navigator(Routes.onboardingScreen);
+    });
   }
 
   @override

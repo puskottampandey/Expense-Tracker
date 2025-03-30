@@ -37,6 +37,9 @@ class AppColors {
   static final kvveryYellowlightColor = Color(0xffFCEED4);
 
   static final kPrimaryBlueColor = Color(0xff0077FF);
+  static const black = Color(0xff000000);
+  static const white = Color(0xFFFFFFFF);
+  static const darkModeBackground = Color(0xff121212);
   static final kseconadaryBlueColor = Color(0xff248AFF);
   static final klightBlueColor = Color(0xff8AC0FF);
   static final kverylightBlueColor = Color(0xff8AC0FF);
