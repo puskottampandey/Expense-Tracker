@@ -1,5 +1,3 @@
-import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
-
 import 'package:expensetracker/core/constants/constant_assets.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/features/onboarding/domain/entity/onboarding_data.dart';
@@ -8,7 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageViewWidget extends StatelessWidget {
   void Function(int)? onPageChanged;
-  PageViewWidget({super.key, required this.onPageChanged});
+  final PageController controller;
+  PageViewWidget({
+    super.key,
+    required this.onPageChanged,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +19,7 @@ class PageViewWidget extends StatelessWidget {
     final textTheme = theme.textTheme;
     return Expanded(
       child: PageView.builder(
+        controller: controller,
         onPageChanged: (val) {
           onPageChanged?.call(val);
         },
@@ -26,9 +30,9 @@ class PageViewWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(data.image.toString()),
+              Image.asset(data.image),
               Text(
-                data.title.toString(),
+                data.title,
                 style: textTheme.bodyLarge!.copyWith(),
                 maxLines: 2,
                 textAlign: TextAlign.center,
@@ -37,7 +41,7 @@ class PageViewWidget extends StatelessWidget {
               Text(
                 data.des.toString(),
                 style: textTheme.labelLarge!.copyWith(
-                  color: AppColors.kPrimaryRedColor,
+                  color: AppColors.kverylightDarkColor,
                 ),
                 maxLines: 2,
                 textAlign: TextAlign.center,

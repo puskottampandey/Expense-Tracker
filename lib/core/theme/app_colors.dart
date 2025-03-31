@@ -10,9 +10,9 @@ class AppColors {
   static final kseconadarylightColor = Color(0xffE3E5E5);
   static final kwhitelightColor = Color(0xffF1F1FA);
   static final kverywhitelightColor = Color(0xffFCFCFC);
-  static final kvverylightColor = Color(0xffFFFFFF);
+  static const kvverylightColor = Color(0xffFFFFFF);
 
-  static final kPrimaryVoiletColor = Color(0xff7F3DFF);
+  static const kPrimaryVoiletColor = Color(0xff7F3DFF);
   static final kseconadaryVioletColor = Color(0xff8F57FF);
   static final klightVioletColor = Color(0xffB18AFF);
   static final kverylighViloetColor = Color(0xffD3BDFF);

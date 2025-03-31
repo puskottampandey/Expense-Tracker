@@ -1,16 +1,12 @@
 import 'package:expensetracker/core/theme/app_colors.dart';
-import 'package:expensetracker/core/widget/button/custom_icon_button.dart';
-import 'package:expensetracker/core/widget/button/custom_outline_button.dart';
 import 'package:expensetracker/core/widget/button/custom_round_button.dart';
-import 'package:expensetracker/core/widget/button/custom_rounded_button.dart';
+import 'package:expensetracker/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import 'package:expensetracker/features/onboarding/presentation/widget/page_indicator_widget.dart';
 import 'package:expensetracker/features/onboarding/presentation/widget/page_view_widget.dart';
-import 'package:expensetracker/features/settings/presentation/bloc/language_cubit.dart';
 import 'package:expensetracker/features/settings/presentation/bloc/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class OnboardingWidget extends StatefulWidget {
   const OnboardingWidget({super.key});
@@ -31,36 +27,34 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-          child: BlocBuilder<ThemeCubit, ThemeData>(
+          child: BlocBuilder<OnboardingBloc, int>(
             builder: (context, state) {
               return Column(
                 children: [
-                  
-                  // pageview 
+                  // pageview
                   PageViewWidget(
+                    controller: controller,
                     onPageChanged: (val) {
-                      pageChangeIndex = val;
+                      context.read<OnboardingBloc>().currentPage(val);
                     },
                   ),
                   SizedBox(height: 10.h),
 
-                  // page indicator 
+                  // page indicator
                   PageIndicatorWidget(controller, onboarding.length),
-                  SizedBox(height: 100.h),
-                  
+
+                  SizedBox(height: 50.h),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: CustomRoundButton(
-                      title: pageChangeIndex == 2 ? "Sign Up" : "Continue",
-
+                      title: state == 2 ? "Sign Up" : "Continue",
                       onPressed: () {
-                        if (pageChangeIndex == 2) {
+                        if (state == 2) {
                         } else {
                           controller.nextPage(
                             duration: const Duration(milliseconds: 300),
@@ -70,6 +64,17 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                       },
                     ),
                   ),
+                  state == 2
+                      ? Align(
+                        alignment: Alignment.bottomCenter,
+                        child: CustomRoundButton(
+                          backgroundColor: AppColors.kvveryViloetlightColor,
+                          textColor: AppColors.kPrimaryVoiletColor,
+                          title: "Login",
+                          onPressed: () {},
+                        ),
+                      )
+                      : SizedBox(height: 52.h),
                 ],
               );
             },
