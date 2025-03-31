@@ -7,6 +7,7 @@ class AppColors {
   static final klightDarkColor = Color(0xff464A4D);
   static final kverylightDarkColor = Color(0xff7A7E80);
 
+  static final kPrimarylightColor = Color(0xff91919F);
   static final kseconadarylightColor = Color(0xffE3E5E5);
   static final kwhitelightColor = Color(0xffF1F1FA);
   static final kverywhitelightColor = Color(0xffFCFCFC);

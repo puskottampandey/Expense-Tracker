@@ -28,7 +28,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
-    brightness: Brightness.dark,
+    brightness: Brightness.light,
     useMaterial3: true,
     fontFamily: "poppins",
     scaffoldBackgroundColor: AppColors.kvverylightColor,

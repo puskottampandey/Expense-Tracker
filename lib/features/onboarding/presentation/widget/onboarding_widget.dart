@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/core/widget/button/custom_round_button.dart';
 import 'package:expensetracker/features/onboarding/presentation/bloc/onboarding_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:expensetracker/features/settings/presentation/bloc/theme_cubit.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingWidget extends StatefulWidget {
   const OnboardingWidget({super.key});
@@ -40,7 +42,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                   Align(
                     alignment: Alignment.topRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.go(Routes.loginScreen);
+                      },
                       child: Text(
                         "Skip",
                         style: textTheme.labelLarge!.copyWith(
@@ -70,6 +74,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           title: state == 2 ? "Sign Up" : "Continue",
                           onPressed: () {
                             if (state == 2) {
+                              context.go(Routes.signUpScreen);
                             } else {
                               controller.nextPage(
                                 duration: const Duration(milliseconds: 300),
@@ -86,7 +91,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               backgroundColor: AppColors.kvveryViloetlightColor,
                               textColor: AppColors.kPrimaryVoiletColor,
                               title: "Login",
-                              onPressed: () {},
+                              onPressed: () {
+                                context.go(Routes.loginScreen);
+                              },
                             ),
                           )
                           : SizedBox(height: 52.h),
