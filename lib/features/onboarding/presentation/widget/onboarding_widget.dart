@@ -27,6 +27,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
@@ -34,47 +35,63 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
           child: BlocBuilder<OnboardingBloc, int>(
             builder: (context, state) {
-              return Column(
+              return Stack(
                 children: [
-                  // pageview
-                  PageViewWidget(
-                    controller: controller,
-                    onPageChanged: (val) {
-                      context.read<OnboardingBloc>().currentPage(val);
-                    },
-                  ),
-                  SizedBox(height: 10.h),
-
-                  // page indicator
-                  PageIndicatorWidget(controller, onboarding.length),
-
-                  SizedBox(height: 50.h),
                   Align(
-                    alignment: Alignment.bottomCenter,
-                    child: CustomRoundButton(
-                      title: state == 2 ? "Sign Up" : "Continue",
-                      onPressed: () {
-                        if (state == 2) {
-                        } else {
-                          controller.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn,
-                          );
-                        }
-                      },
+                    alignment: Alignment.topRight,
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Skip",
+                        style: textTheme.labelLarge!.copyWith(
+                          color: AppColors.kPrimaryDarkColor,
+                        ),
+                      ),
                     ),
                   ),
-                  state == 2
-                      ? Align(
+                  Column(
+                    children: [
+                      // pageview
+                      PageViewWidget(
+                        controller: controller,
+                        onPageChanged: (val) {
+                          context.read<OnboardingBloc>().currentPage(val);
+                        },
+                      ),
+                      SizedBox(height: 10.h),
+
+                      // page indicator
+                      PageIndicatorWidget(controller, onboarding.length),
+
+                      SizedBox(height: 50.h),
+                      Align(
                         alignment: Alignment.bottomCenter,
                         child: CustomRoundButton(
-                          backgroundColor: AppColors.kvveryViloetlightColor,
-                          textColor: AppColors.kPrimaryVoiletColor,
-                          title: "Login",
-                          onPressed: () {},
+                          title: state == 2 ? "Sign Up" : "Continue",
+                          onPressed: () {
+                            if (state == 2) {
+                            } else {
+                              controller.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeIn,
+                              );
+                            }
+                          },
                         ),
-                      )
-                      : SizedBox(height: 52.h),
+                      ),
+                      state == 2
+                          ? Align(
+                            alignment: Alignment.bottomCenter,
+                            child: CustomRoundButton(
+                              backgroundColor: AppColors.kvveryViloetlightColor,
+                              textColor: AppColors.kPrimaryVoiletColor,
+                              title: "Login",
+                              onPressed: () {},
+                            ),
+                          )
+                          : SizedBox(height: 52.h),
+                    ],
+                  ),
                 ],
               );
             },
