@@ -25,95 +25,52 @@ class _SignupWidgetState extends State<SignupWidget> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     return ScaffoldWrapper(
-      title: "Sign Up",
+      title: "SignUp",
       body: ListView(
         children: [
-          SizedBox(height: 60.h),
+          SizedBox(height: 80.h),
           Form(
             key: _formkeyLogin,
             child: Column(
               children: [
-                // CustomTextField(
-                //   onChanged: (value) {
-                //     validateField();
-                //   },
-                //   controller: emailController,
-                //   prefixIcon: Icon(
-                //     Icons.person_outline,
-                //     color: Theme.of(context).colorScheme.onSurface,
-                //   ),
-                //   labelText: "Email or Phone Number",
-                //   validator: (value) {
-                //     return FormValidator.validateFieldNotEmpty(
-                //       value ?? "",
-                //       "Phone Number or Email",
-                //     );
-                //   },
-                // ),
-                // CustomTextField(
-                //   onChanged: (value) {
-                //     validateField();
-                //   },
-                //   controller: emailController,
-                //   prefixIcon: Icon(
-                //     Icons.person_outline,
-                //     color: Theme.of(context).colorScheme.onSurface,
-                //   ),
-                //   labelText: "Email or Phone Number",
-                //   validator: (value) {
-                //     return FormValidator.validateFieldNotEmpty(
-                //       value ?? "",
-                //       "Phone Number or Email",
-                //     );
-                //   },
-                // ),
                 ReusableFormField(
+                  title: "Email or Username",
                   controller: emailController,
                   hint: "Email",
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.text,
+                  onChanged: (val) {
+                    validateField();
+                  },
                   validator: (String? value) {
-                    return FormValidator.validateFieldNotEmpty(
-                      value ?? "",
-                      " Enter Phone Number or Email",
-                    );
+                    return FormValidator.validateEmail(value ?? "");
                   },
                 ),
                 SizedBox(height: 10.h),
                 ReusableFormField(
+                  title: "Password",
                   obscureText: true,
                   controller: passwordcontroller,
                   hint: "Password",
+                  onChanged: (val) {
+                    validateField();
+                  },
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.text,
                   validator: (String? value) {
-                    return FormValidator.validateFieldNotEmpty(
-                      value ?? "",
-                      "Enter a password",
-                    );
+                    return FormValidator.validatePassword(value ?? "");
                   },
                 ),
                 SizedBox(height: 20.h),
                 CustomRoundButton(
-                  title: "Login",
+                  title: "Sign Up",
                   onPressed: () {
-                    if (_formkeyLogin.currentState!.validate()) {}
+                    signUp();
                   },
                 ),
-                // ReuseableButton(
-                //   bgcolor: kPrimaryVoiletColor,
-                //   text: "Login",
-                //   textcolor: kvverylightColor,
-                //   ontap: () {
-                //     if (_formkeyLogin.currentState!.validate()) {}
-                //     context.push("/accountSetup");
-                //   },
-                // ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 10.h),
                 GestureDetector(
-                  onTap: () {
-                    // context.push("/forgotpassword");
-                  },
+                  onTap: () {},
                   child: Text(
                     "Forgot Password?",
                     style: textTheme.bodyLarge!.copyWith(
@@ -123,7 +80,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 10.h),
                 GestureDetector(
                   onTap: () {
                     context.push("/signup");
@@ -133,16 +90,15 @@ class _SignupWidgetState extends State<SignupWidget> {
                       text: "Don't have an account yet? ",
                       style: textTheme.bodyLarge!.copyWith(
                         fontSize: AppColors.regular2,
-                        color: AppColors.kPrimaryVoiletColor,
+                        color: AppColors.kPrimarylightColor,
                         fontWeight: FontWeight.w600,
                       ),
                       children: [
                         TextSpan(
-                          text: "SignUp",
+                          text: "Login",
                           style: textTheme.bodyLarge!.copyWith(
-                            decoration: TextDecoration.underline,
                             fontSize: AppColors.regular2,
-                            color: AppColors.kPrimarylightColor,
+                            color: AppColors.kPrimaryVoiletColor,
                             fontWeight: FontWeight.w600,
                           ),
                         ),

@@ -31,7 +31,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),

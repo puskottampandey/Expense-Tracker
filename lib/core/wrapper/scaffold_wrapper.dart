@@ -18,9 +18,9 @@ class ScaffoldWrapper extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: AppColors.kvverylightColor,
+        backgroundColor: AppColors.white,
         appBar: AppBar(
-          backgroundColor: AppColors.kvverylightColor,
+          backgroundColor: AppColors.white,
           centerTitle: true,
           // leading: InkWell(
           //   onTap: () {

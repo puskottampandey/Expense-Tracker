@@ -32,11 +32,12 @@ class AppTheme {
     useMaterial3: true,
     fontFamily: "poppins",
     scaffoldBackgroundColor: AppColors.kvverylightColor,
+
     appBarTheme: AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: AppColors.white,
-        statusBarIconBrightness: Brightness.dark,
-        statusBarBrightness: Brightness.dark,
+        statusBarColor: AppColors.kPrimaryVoiletColor,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
       ),
     ),
     textTheme: TextTheme(

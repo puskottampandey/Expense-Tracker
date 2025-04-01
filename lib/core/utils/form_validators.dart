@@ -9,13 +9,13 @@ class FormValidator {
     if (supportEmpty && (val == null || val.isEmpty)) {
       return null;
     } else if (val == null) {
-      return val;
+      return "Email Required";
     } else if (val.isEmpty) {
-      return val;
+      return "Email Required";
     } else if (Regex.emailRegex.hasMatch(val)) {
       return null;
     } else {
-      return val;
+      return "Email Required";
     }
   }
 

@@ -10,6 +10,7 @@ class ReusableFormField extends StatefulWidget {
 
   final TextEditingController? controller;
   final String? hint;
+  final String title;
   final String? initialValue;
   final String? label;
   final String? labeltext;
@@ -72,6 +73,7 @@ class ReusableFormField extends StatefulWidget {
     this.contentPadding,
     this.focusNode,
     this.labeltext,
+    required this.title,
   });
 
   @override
@@ -115,19 +117,22 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     return Container(
       margin:
           widget.marginBottom ? EdgeInsets.only(bottom: 10.h) : EdgeInsets.zero,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Material(
-            shadowColor: AppColors.white,
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(16.r),
-            child: formField(context),
+          Text(
+            widget.title,
+            style: textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w500,
+              color: AppColors.kseconadaryDarkColor,
+            ),
           ),
-          errorTextWidget(),
+          formField(context),
         ],
       ),
     );
@@ -137,11 +142,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     return TextFormField(
-      style: textTheme.bodyLarge!.copyWith(
-        fontSize: AppColors.regular2,
-        color: AppColors.kPrimaryDarkColor,
-        fontWeight: FontWeight.bold,
-      ),
+      style: textTheme.titleSmall,
       cursorColor: AppColors.kPrimaryVoiletColor,
       minLines: widget.minLines,
       focusNode: widget.focusNode,
@@ -161,42 +162,35 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
       decoration: InputDecoration(
         labelText: widget.labeltext,
         counterText: "",
-        fillColor: AppColors.white,
+        fillColor: AppColors.backgroundColor,
         filled: widget.isFilled,
         hintText: widget.hint,
-        hintStyle: textTheme.titleSmall?.copyWith(
+        hintStyle: textTheme.titleMedium?.copyWith(
           color: AppColors.kverylightDarkColor,
-          fontSize: 12.sp,
+        ),
+        errorStyle: textTheme.titleSmall?.copyWith(
+          color: AppColors.kPrimaryRedColor,
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(width: 2.0, color: AppColors.kPrimaryRedColor),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide(width: 1.5, color: AppColors.kPrimaryRedColor),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(width: 2.0, color: AppColors.kPrimaryRedColor),
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide(width: 1.5, color: AppColors.kPrimaryRedColor),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
-            color: AppColors.kseconadarylightColor,
-            width: 2.0,
-          ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
-            color: AppColors.kseconadarylightColor,
-            width: 2.0,
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.r),
-          borderSide: BorderSide(
-            color: AppColors.kseconadarylightColor,
-            width: 2.0,
-          ),
-        ),
+        focusedBorder:
+            widget.controller!.text.isNotEmpty
+                ? OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.r),
+                  borderSide: BorderSide(
+                    color: AppColors.kPrimaryVoiletColor,
+                    width: 1.5,
+                  ),
+                )
+                : InputBorder.none,
+
+        border: InputBorder.none,
         prefixIcon:
             widget.prefix != null
                 ? Icon(
@@ -208,7 +202,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         isDense: true, // Added this
         contentPadding:
             widget.contentPadding ??
-            EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+            EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
         suffixIcon:
             widget.sufixIcon ??
             (widget.maxLines == 1
@@ -220,7 +214,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
                           obscureText
                               ? Icons.visibility_off_outlined
                               : Icons.visibility_outlined,
-                          color: AppColors.kvverylightColor,
+                          color: AppColors.kverylightDarkColor,
                         ),
                         onPressed: () {
                           setState(() {
@@ -234,42 +228,9 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
                     : null
                 : null),
       ),
-      validator: (value) {
-        if (widget.validator != null) {
-          setState(() {
-            errorText = widget.validator!(value);
-          });
-        }
-        return errorText == null ? null : '';
-      },
+      validator: widget.validator,
       autovalidateMode: AutovalidateMode.disabled,
-      onChanged:
-          widget.onChanged != null
-              ? widget.onChanged?.call
-              : (value) {
-                if (widget.validator != null) {
-                  setState(() {
-                    _updatePassword(widget.controller!.text);
-                    errorText = widget.validator!(value);
-                  });
-                }
-              },
-      onSaved: (value) {
-        if (widget.validator != null) {
-          setState(() {
-            errorText = widget.validator!(value);
-          });
-        }
-      },
-      onFieldSubmitted: (value) {
-        if (widget.onFieldSubmit != null) {
-          widget.onFieldSubmit!.call(value);
-        } else if (widget.validator != null) {
-          setState(() {
-            errorText = widget.validator!(value);
-          });
-        }
-      },
+      onChanged: widget.onChanged,
     );
   }
 
@@ -288,7 +249,6 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
     return widget.validation
         ? Column(
           children: [
-            SizedBox(height: 10.h),
             LinearProgressIndicator(
               borderRadius: BorderRadius.circular(8.r),
               value: _strength / 100,
@@ -339,8 +299,8 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
                 ),
               ],
             )
-            : Container()
-        : Container();
+            : SizedBox()
+        : SizedBox();
   }
 
   Color _getColorForStrength(int strength) {
@@ -390,6 +350,152 @@ class PassWordValidation extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
+    super.key,
+    this.width = double.infinity,
+    this.height,
+    this.fontSize = 16,
+    this.labelText,
+    this.isObscureText = false,
+    this.initialValue,
+    this.textInputType,
+    this.controller,
+    this.validator,
+    this.color,
+    this.prefixIcon,
+    this.maxLength,
+    this.onTap,
+    this.onChanged,
+    this.suffixIcon,
+    this.isReadOnly = false,
+    this.isRequired = false,
+    this.maxLines = 1,
+    this.helperText,
+    this.textInputFormatterList,
+    this.bottomMargin,
+    this.textInputAction,
+    this.hintText,
+    this.contentPadding,
+    this.isDisable = false,
+    this.focusNode,
+    TextStyle? helperStyle,
+  });
+
+  final double? width;
+  final double? height;
+  final double fontSize;
+  final String? labelText;
+  final bool isObscureText;
+  final bool isReadOnly;
+  final Color? color;
+  final String? initialValue;
+  final TextInputType? textInputType;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final int? maxLength;
+  final Function()? onTap;
+  final void Function(String)? onChanged;
+  final bool isRequired;
+  final int maxLines;
+  final String? helperText;
+  final List<TextInputFormatter>? textInputFormatterList;
+  final double? bottomMargin;
+  final TextInputAction? textInputAction;
+  final String? hintText;
+
+  final EdgeInsets? contentPadding;
+  final bool isDisable;
+  final FocusNode? focusNode;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    return AbsorbPointer(
+      absorbing: isDisable,
+      child: Container(
+        margin: EdgeInsets.only(bottom: bottomMargin ?? 20),
+        width: width,
+        height: height,
+        child: TextFormField(
+          selectionControls: MaterialTextSelectionControls(),
+          focusNode: focusNode,
+          scrollPadding: const EdgeInsets.all(0),
+          textAlign: maxLength != null ? TextAlign.center : TextAlign.left,
+          controller: controller,
+          keyboardType: textInputType,
+          obscureText: isObscureText,
+          cursorColor: color,
+          initialValue: initialValue,
+          validator: validator,
+          maxLength: maxLength,
+          onChanged: onChanged,
+          onTap: onTap,
+          readOnly: isReadOnly,
+          maxLines: maxLines,
+          textInputAction: textInputAction,
+          inputFormatters: textInputFormatterList,
+          style:
+              maxLength == 1
+                  ? textTheme.bodyMedium!.copyWith(
+                    color: color,
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.w400,
+                  )
+                  : textTheme.bodyMedium!.copyWith(
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.w400,
+                  ),
+          decoration: InputDecoration(
+            hintText: hintText,
+            errorStyle: textTheme.bodyMedium!.copyWith(
+              inherit: true,
+              fontSize: 12,
+              color: AppColors.kPrimaryRedColor,
+              // fontWeight: FontWeight.w400
+            ),
+            contentPadding:
+                contentPadding ??
+                EdgeInsets.symmetric(vertical: 8.h, horizontal: 20.w),
+            counterText: "",
+            fillColor: AppColors.backgroundColor,
+            filled: true,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.r),
+              borderSide: BorderSide(
+                width: 1,
+                color: AppColors.kPrimaryRedColor,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.r),
+              borderSide: BorderSide(color: AppColors.kseconadaryDarkColor),
+            ),
+            border: InputBorder.none,
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: AppColors.kseconadaryDarkColor),
+              borderRadius: BorderRadius.circular(8.r),
+            ),
+            labelText:
+                labelText != null
+                    ? isRequired
+                        ? "$labelText * "
+                        : labelText
+                    : null,
+            alignLabelWithHint: true,
+            labelStyle: textTheme.labelMedium,
+          ),
+        ),
       ),
     );
   }
