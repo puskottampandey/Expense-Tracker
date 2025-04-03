@@ -4,6 +4,7 @@ import 'package:expensetracker/core/widget/button/custom_round_button.dart';
 import 'package:expensetracker/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import 'package:expensetracker/features/onboarding/presentation/widget/page_indicator_widget.dart';
 import 'package:expensetracker/features/onboarding/presentation/widget/page_view_widget.dart';
+import 'package:expensetracker/features/onboarding/presentation/widget/text_align_widget.dart';
 import 'package:expensetracker/features/settings/presentation/bloc/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,11 +21,6 @@ class OnboardingWidget extends StatefulWidget {
 class _OnboardingWidgetState extends State<OnboardingWidget> {
   PageController controller = PageController(initialPage: 0);
   int pageChangeIndex = 0;
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,20 +34,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             builder: (context, state) {
               return Stack(
                 children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: TextButton(
-                      onPressed: () {
-                        context.go(Routes.loginScreen);
-                      },
-                      child: Text(
-                        "Skip",
-                        style: textTheme.labelLarge!.copyWith(
-                          color: AppColors.kPrimaryDarkColor,
-                        ),
-                      ),
-                    ),
-                  ),
+                  TextAlignRight(alignText: "Skip"),
                   Column(
                     children: [
                       // pageview
@@ -73,7 +56,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           title: state == 2 ? "Sign Up" : "Continue",
                           onPressed: () {
                             if (state == 2) {
-                              context.go(Routes.signUpScreen);
+                              context.go(Routes.loginScreen);
                             } else {
                               controller.nextPage(
                                 duration: const Duration(milliseconds: 300),
@@ -105,5 +88,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }

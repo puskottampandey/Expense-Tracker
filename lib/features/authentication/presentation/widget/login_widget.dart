@@ -1,8 +1,11 @@
+import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/core/utils/form_validators.dart';
 import 'package:expensetracker/core/widget/button/custom_round_button.dart';
 import 'package:expensetracker/core/widget/text_field/custom_text_field.dart';
 import 'package:expensetracker/core/wrapper/scaffold_wrapper.dart';
+import 'package:expensetracker/features/authentication/presentation/widget/single_text_onpressed_widget.dart';
+import 'package:expensetracker/features/authentication/presentation/widget/text_onpressed_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -22,8 +25,6 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
     return ScaffoldWrapper(
       title: "Login",
       body: ListView(
@@ -36,9 +37,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ReusableFormField(
                   title: "Email or Username",
                   controller: emailController,
-                  hint: "Email",
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.text,
                   onChanged: (val) {
                     validateField();
                   },
@@ -47,21 +45,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                   },
                 ),
                 SizedBox(height: 10.h),
+
                 ReusableFormField(
                   title: "Password",
                   obscureText: true,
                   controller: passwordcontroller,
-                  hint: "Password",
                   onChanged: (val) {
                     validateField();
                   },
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
                   validator: (String? value) {
                     return FormValidator.validatePassword(value ?? "");
                   },
                 ),
-                SizedBox(height: 20.h),
+                SizedBox(height: 10.h),
                 CustomRoundButton(
                   title: "Login",
                   onPressed: () {
@@ -69,43 +66,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                   },
                 ),
                 SizedBox(height: 10.h),
-                GestureDetector(
-                  onTap: () {
-                  },
-                  child: Text(
-                    "Forgot Password?",
-                    style: textTheme.bodyLarge!.copyWith(
-                      fontSize: AppColors.regular2,
-                      color: AppColors.kPrimaryVoiletColor,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
+                TextTapped(text: "Forgot Password", onTap: () {}),
                 SizedBox(height: 10.h),
-                GestureDetector(
+                TextWithOnPressed(
+                  staticText: "Don't have account yet? ",
+                  navigateText: "SignUp",
                   onTap: () {
-                    context.push("/signup");
+                    context.push(Routes.signUpScreen);
                   },
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Don't have an account yet? ",
-                      style: textTheme.bodyLarge!.copyWith(
-                        fontSize: AppColors.regular2,
-                        color: AppColors.kPrimarylightColor,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "SignUp",
-                          style: textTheme.bodyLarge!.copyWith(
-                            fontSize: AppColors.regular2,
-                            color: AppColors.kPrimaryVoiletColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
               ],
             ),

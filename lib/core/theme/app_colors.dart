@@ -45,7 +45,7 @@ class AppColors {
   static final klightBlueColor = Color(0xff8AC0FF);
   static final kverylightBlueColor = Color(0xff8AC0FF);
   static final kvvlightBlueColor = Color(0xffBDDCFF);
-  static final backgroundColor = Color.fromARGB(255, 251, 248, 248);
+  static final backgroundColor = Color(0xffF1F1FA);
   static final containergradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

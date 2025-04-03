@@ -31,14 +31,7 @@ class ScaffoldWrapper extends StatelessWidget {
           //     child: Icon(Icons.arrow_back_ios),
           //   ),
           // ),
-          title: Text(
-            title,
-            style: textTheme.bodyLarge!.copyWith(
-              fontSize: AppColors.title3,
-              color: AppColors.kseconadaryDarkColor,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          title: Text(title, style: textTheme.bodySmall),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),

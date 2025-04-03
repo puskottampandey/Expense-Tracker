@@ -9,13 +9,11 @@ class ReusableFormField extends StatefulWidget {
   final void Function(String?)? onFieldSubmit;
 
   final TextEditingController? controller;
-  final String? hint;
   final String title;
   final String? initialValue;
   final String? label;
   final String? labeltext;
   final bool obscureText;
-  final bool isChirfaar;
   final TextInputType keyboardType;
   final int maxLines;
   final int minLines;
@@ -48,11 +46,9 @@ class ReusableFormField extends StatefulWidget {
     this.marginBottom = true,
     this.isPhone = false,
     this.validation = false,
-    this.hint,
     this.label,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
-    this.isChirfaar = false,
     this.maxLines = 1,
     this.minLines = 1,
     this.maxLength,
@@ -65,7 +61,7 @@ class ReusableFormField extends StatefulWidget {
     this.onTap,
     this.sufixIcon,
     this.autofocus,
-    this.textInputAction,
+    this.textInputAction = TextInputAction.next,
     this.showError = true,
     this.isFilled = true,
     this.readonly = false,
@@ -125,14 +121,10 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            widget.title,
-            style: textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w500,
-              color: AppColors.kseconadaryDarkColor,
-            ),
-          ),
+          Text(widget.title, style: textTheme.labelLarge),
+          SizedBox(height: 2.h),
           formField(context),
+          SizedBox(height: 10.h),
         ],
       ),
     );
@@ -142,7 +134,9 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     return TextFormField(
-      style: textTheme.titleSmall,
+      style: textTheme.titleMedium?.copyWith(
+        color: AppColors.kseconadaryDarkColor,
+      ),
       cursorColor: AppColors.kPrimaryVoiletColor,
       minLines: widget.minLines,
       focusNode: widget.focusNode,
@@ -164,7 +158,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         counterText: "",
         fillColor: AppColors.backgroundColor,
         filled: widget.isFilled,
-        hintText: widget.hint,
+        hintText: widget.title,
         hintStyle: textTheme.titleMedium?.copyWith(
           color: AppColors.kverylightDarkColor,
         ),
@@ -179,16 +173,13 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
           borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(width: 1.5, color: AppColors.kPrimaryRedColor),
         ),
-        focusedBorder:
-            widget.controller!.text.isNotEmpty
-                ? OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.r),
-                  borderSide: BorderSide(
-                    color: AppColors.kPrimaryVoiletColor,
-                    width: 1.5,
-                  ),
-                )
-                : InputBorder.none,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide(
+            color: AppColors.kPrimaryVoiletColor,
+            width: 1.5,
+          ),
+        ),
 
         border: InputBorder.none,
         prefixIcon:

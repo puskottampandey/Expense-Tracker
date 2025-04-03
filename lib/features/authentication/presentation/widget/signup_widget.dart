@@ -1,8 +1,11 @@
+import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/core/utils/form_validators.dart';
 import 'package:expensetracker/core/widget/button/custom_round_button.dart';
 import 'package:expensetracker/core/widget/text_field/custom_text_field.dart';
 import 'package:expensetracker/core/wrapper/scaffold_wrapper.dart';
+import 'package:expensetracker/features/authentication/presentation/widget/check_button_text_widget.dart';
+import 'package:expensetracker/features/authentication/presentation/widget/text_onpressed_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -17,7 +20,8 @@ class SignupWidget extends StatefulWidget {
 class _SignupWidgetState extends State<SignupWidget> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
-  static final _formkeyLogin = GlobalKey<FormState>();
+  final TextEditingController namecontroller = TextEditingController();
+  static final _formkeySignUp = GlobalKey<FormState>();
   bool _isAlreadyValidate = false;
 
   @override
@@ -30,15 +34,12 @@ class _SignupWidgetState extends State<SignupWidget> {
         children: [
           SizedBox(height: 80.h),
           Form(
-            key: _formkeyLogin,
+            key: _formkeySignUp,
             child: Column(
               children: [
                 ReusableFormField(
-                  title: "Email or Username",
-                  controller: emailController,
-                  hint: "Email",
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.text,
+                  title: "Name",
+                  controller: namecontroller,
                   onChanged: (val) {
                     validateField();
                   },
@@ -46,22 +47,40 @@ class _SignupWidgetState extends State<SignupWidget> {
                     return FormValidator.validateEmail(value ?? "");
                   },
                 ),
-                SizedBox(height: 10.h),
+                ReusableFormField(
+                  title: "Email",
+                  controller: emailController,
+                  onChanged: (val) {
+                    validateField();
+                  },
+                  validator: (String? value) {
+                    return FormValidator.validateEmail(value ?? "");
+                  },
+                ),
+
                 ReusableFormField(
                   title: "Password",
                   obscureText: true,
                   controller: passwordcontroller,
-                  hint: "Password",
                   onChanged: (val) {
                     validateField();
                   },
-                  textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.text,
                   validator: (String? value) {
                     return FormValidator.validatePassword(value ?? "");
                   },
                 ),
+                CheckButtonText(
+                  policytext: " Terms of Service and Privacy Policy",
+                  text: "By signing up, you agree to the",
+                ),
                 SizedBox(height: 20.h),
+                Text(
+                  "Or with",
+                  style: textTheme.labelSmall!.copyWith(
+                    color: AppColors.kPrimarylightColor,
+                  ),
+                ),
+                SizedBox(height: 10.h),
                 CustomRoundButton(
                   title: "Sign Up",
                   onPressed: () {
@@ -69,42 +88,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                   },
                 ),
                 SizedBox(height: 10.h),
-                GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    "Forgot Password?",
-                    style: textTheme.bodyLarge!.copyWith(
-                      fontSize: AppColors.regular2,
-                      color: AppColors.kPrimaryVoiletColor,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10.h),
-                GestureDetector(
+                TextWithOnPressed(
+                  staticText: "Don't have an account yet? ",
+                  navigateText: "Login",
                   onTap: () {
-                    context.push("/signup");
+                    context.push(Routes.loginScreen);
                   },
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Don't have an account yet? ",
-                      style: textTheme.bodyLarge!.copyWith(
-                        fontSize: AppColors.regular2,
-                        color: AppColors.kPrimarylightColor,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "Login",
-                          style: textTheme.bodyLarge!.copyWith(
-                            fontSize: AppColors.regular2,
-                            color: AppColors.kPrimaryVoiletColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
               ],
             ),
@@ -116,7 +105,7 @@ class _SignupWidgetState extends State<SignupWidget> {
 
   validateField() {
     if (_isAlreadyValidate) {
-      _formkeyLogin.currentState!.validate();
+      _formkeySignUp.currentState!.validate();
     }
   }
 
@@ -124,8 +113,16 @@ class _SignupWidgetState extends State<SignupWidget> {
     setState(() {
       _isAlreadyValidate = true;
     });
-    if (_formkeyLogin.currentState!.validate()) {
+    if (_formkeySignUp.currentState!.validate()) {
       FocusScope.of(context).unfocus();
     }
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    namecontroller.dispose();
+    passwordcontroller.dispose();
+    super.dispose();
   }
 }
