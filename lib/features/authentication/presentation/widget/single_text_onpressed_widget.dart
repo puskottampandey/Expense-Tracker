@@ -1,5 +1,5 @@
-import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextTapped extends StatelessWidget {
   final void Function()? onTap;
@@ -12,7 +12,12 @@ class TextTapped extends StatelessWidget {
     final textTheme = theme.textTheme;
     return GestureDetector(
       onTap: onTap,
-      child: Text(text, style: textTheme.labelSmall),
+      child: Column(
+        children: [
+          Text(text, style: textTheme.labelSmall),
+          SizedBox(height: 10.h),
+        ],
+      ),
     );
   }
 }

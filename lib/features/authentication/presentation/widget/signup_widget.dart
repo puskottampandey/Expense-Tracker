@@ -1,8 +1,11 @@
+import 'package:expensetracker/core/constants/constant_assets.dart';
 import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/core/utils/form_validators.dart';
+import 'package:expensetracker/core/widget/button/custom_icon_button.dart';
 import 'package:expensetracker/core/widget/button/custom_round_button.dart';
 import 'package:expensetracker/core/widget/text_field/custom_text_field.dart';
+import 'package:expensetracker/core/widget/text_tile/content_text.dart';
 import 'package:expensetracker/core/wrapper/scaffold_wrapper.dart';
 import 'package:expensetracker/features/authentication/presentation/widget/check_button_text_widget.dart';
 import 'package:expensetracker/features/authentication/presentation/widget/text_onpressed_widget.dart';
@@ -21,13 +24,11 @@ class _SignupWidgetState extends State<SignupWidget> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
   final TextEditingController namecontroller = TextEditingController();
-  static final _formkeySignUp = GlobalKey<FormState>();
+  final _formkeySignUp = GlobalKey<FormState>();
   bool _isAlreadyValidate = false;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
     return ScaffoldWrapper(
       title: "SignUp",
       body: ListView(
@@ -73,14 +74,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                   policytext: " Terms of Service and Privacy Policy",
                   text: "By signing up, you agree to the",
                 ),
-                SizedBox(height: 20.h),
-                Text(
-                  "Or with",
-                  style: textTheme.labelSmall!.copyWith(
-                    color: AppColors.kPrimarylightColor,
-                  ),
-                ),
                 SizedBox(height: 10.h),
+                ContentText(
+                  title: "Or with",
+                  color: AppColors.kPrimarylightColor,
+                ),
+                CustomIconButton(title: "  Sign Up with Google"),
                 CustomRoundButton(
                   title: "Sign Up",
                   onPressed: () {

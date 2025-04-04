@@ -25,7 +25,6 @@ class TextWithOnPressed extends StatelessWidget {
           style: textTheme.labelSmall?.copyWith(
             color: AppColors.kverylightDarkColor,
           ),
-
           children: [TextSpan(text: navigateText, style: textTheme.labelSmall)],
         ),
       ),

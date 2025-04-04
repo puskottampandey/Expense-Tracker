@@ -5,7 +5,6 @@ import 'package:expensetracker/features/onboarding/presentation/bloc/onboarding_
 import 'package:expensetracker/features/onboarding/presentation/widget/page_indicator_widget.dart';
 import 'package:expensetracker/features/onboarding/presentation/widget/page_view_widget.dart';
 import 'package:expensetracker/features/onboarding/presentation/widget/text_align_widget.dart';
-import 'package:expensetracker/features/settings/presentation/bloc/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,8 +23,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -34,7 +31,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             builder: (context, state) {
               return Stack(
                 children: [
-                  TextAlignRight(alignText: "Skip"),
+                  TextAlignRight(
+                    alignText: "Skip",
+                    onTap: () {
+                      context.push(Routes.loginScreen);
+                    },
+                  ),
                   Column(
                     children: [
                       // pageview

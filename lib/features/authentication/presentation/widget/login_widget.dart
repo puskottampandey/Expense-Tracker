@@ -1,5 +1,4 @@
 import 'package:expensetracker/core/route/constant_route.dart';
-import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/core/utils/form_validators.dart';
 import 'package:expensetracker/core/widget/button/custom_round_button.dart';
 import 'package:expensetracker/core/widget/text_field/custom_text_field.dart';
@@ -20,7 +19,7 @@ class LoginWidget extends StatefulWidget {
 class _LoginWidgetState extends State<LoginWidget> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
-  static final _formkeyLogin = GlobalKey<FormState>();
+  final _formkeyLogin = GlobalKey<FormState>();
   bool _isAlreadyValidate = false;
 
   @override
@@ -44,7 +43,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                     return FormValidator.validateEmail(value ?? "");
                   },
                 ),
-                SizedBox(height: 10.h),
 
                 ReusableFormField(
                   title: "Password",
@@ -58,7 +56,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     return FormValidator.validatePassword(value ?? "");
                   },
                 ),
-                SizedBox(height: 10.h),
+
                 CustomRoundButton(
                   title: "Login",
                   onPressed: () {
@@ -67,7 +65,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
                 SizedBox(height: 10.h),
                 TextTapped(text: "Forgot Password", onTap: () {}),
-                SizedBox(height: 10.h),
                 TextWithOnPressed(
                   staticText: "Don't have account yet? ",
                   navigateText: "SignUp",

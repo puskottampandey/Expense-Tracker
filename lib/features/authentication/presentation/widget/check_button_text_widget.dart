@@ -40,7 +40,8 @@ class CheckButtonText extends StatelessWidget {
         Expanded(
           child: RichText(
             maxLines: 2,
-            text: TextSpan(
+            text:
+             TextSpan(
               text: text,
               style: textTheme.labelSmall!.copyWith(
                 color: AppColors.kseconadaryDarkColor,

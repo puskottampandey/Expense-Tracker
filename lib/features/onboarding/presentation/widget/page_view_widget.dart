@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageViewWidget extends StatelessWidget {
-  void Function(int)? onPageChanged;
+  final Function(int)? onPageChanged;
   final PageController controller;
-  PageViewWidget({
+  const PageViewWidget({
     super.key,
     required this.onPageChanged,
     required this.controller,

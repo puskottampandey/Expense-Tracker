@@ -86,30 +86,30 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
   bool obscureText;
 
   _ReusableFormFieldState({required this.obscureText});
-  String _password = '';
-  int _strength = 0; // Strength out of 100
+  final String _password = '';
+  final int _strength = 0; // Strength out of 100
 
-  void _updatePassword(String value) {
-    setState(() {
-      _password = value;
-      _calculateStrength();
-    });
-  }
+  // void _updatePassword(String value) {
+  //   setState(() {
+  //     _password = value;
+  //     _calculateStrength();
+  //   });
+  // }
 
-  void _calculateStrength() {
-    int length = _password.length;
-    int strength = 0;
-    if (length >= 8) strength += 20;
-    if (RegExp(r'^(?=.*[a-z])(?=.*[A-Z]).+$').hasMatch(_password)) {
-      strength += 40;
-    }
-    if (RegExp(r'[0-9]').hasMatch(_password)) strength += 20;
-    if (RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(_password)) strength += 20;
+  // void _calculateStrength() {
+  //   int length = _password.length;
+  //   int strength = 0;
+  //   if (length >= 8) strength += 20;
+  //   if (RegExp(r'^(?=.*[a-z])(?=.*[A-Z]).+$').hasMatch(_password)) {
+  //     strength += 40;
+  //   }
+  //   if (RegExp(r'[0-9]').hasMatch(_password)) strength += 20;
+  //   if (RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(_password)) strength += 20;
 
-    setState(() {
-      _strength = strength;
-    });
-  }
+  //   setState(() {
+  //     _strength = strength;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -181,7 +181,11 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
           ),
         ),
 
-        border: InputBorder.none,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide.none,
+        ),
+
         prefixIcon:
             widget.prefix != null
                 ? Icon(

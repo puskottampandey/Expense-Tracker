@@ -1,11 +1,10 @@
-import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class TextAlignRight extends StatelessWidget {
   final String alignText;
-  const TextAlignRight({super.key, required this.alignText});
+  final void Function()? onTap;
+  const TextAlignRight({super.key, required this.alignText, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +13,7 @@ class TextAlignRight extends StatelessWidget {
     return Align(
       alignment: Alignment.topRight,
       child: InkWell(
-        onTap: () {
-          context.go(Routes.loginScreen);
-        },
+        onTap: onTap,
         child: Text(
           alignText,
           style: textTheme.labelLarge!.copyWith(

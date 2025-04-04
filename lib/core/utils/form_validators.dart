@@ -1,8 +1,4 @@
-import 'dart:io';
-
-import 'package:expensetracker/core/navigation/navigation_service.dart';
 import 'package:expensetracker/core/utils/regex.dart';
-import 'package:expensetracker/generated/l10n.dart';
 
 class FormValidator {
   static String? validateEmail(String? val, [bool supportEmpty = false]) {
@@ -49,9 +45,9 @@ class FormValidator {
     String? oldPassword,
   }) {
     if (val == null) {
-      return "Password";
+      return "Password Required";
     } else if (val.isEmpty) {
-      return "Password";
+      return "Password Required";
     }
 
     if (oldPassword != null && val == oldPassword) {
@@ -59,7 +55,7 @@ class FormValidator {
     } else if (Regex.passwordRegex.hasMatch(val)) {
       return null;
     } else {
-      return "password is not stro";
+      return "password is not strong";
     }
   }
 
