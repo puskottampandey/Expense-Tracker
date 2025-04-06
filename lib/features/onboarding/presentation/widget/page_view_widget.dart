@@ -33,14 +33,14 @@ class PageViewWidget extends StatelessWidget {
               Image.asset(data.image),
               Text(
                 data.title,
-                style: textTheme.bodyLarge!.copyWith(),
+                style: textTheme.bodyLarge,
                 maxLines: 2,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 10.h),
               Text(
-                data.des.toString(),
-                style: textTheme.labelLarge!.copyWith(
+                data.des,
+                style: textTheme.bodySmall!.copyWith(
                   color: AppColors.kverylightDarkColor,
                 ),
                 maxLines: 2,

@@ -30,7 +30,7 @@ class ScaffoldWrapper extends StatelessWidget {
           //     child: Icon(Icons.arrow_back_ios),
           //   ),
           // ),
-          title: Text(title, style: textTheme.bodySmall),
+          title: Text(title, style: textTheme.bodyMedium),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),

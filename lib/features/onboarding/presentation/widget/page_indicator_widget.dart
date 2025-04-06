@@ -12,7 +12,10 @@ class PageIndicatorWidget extends StatelessWidget {
     return SmoothPageIndicator(
       controller: controller,
       count: length,
-      effect: WormEffect(activeDotColor: AppColors.kPrimaryVoiletColor),
+      effect: WormEffect(
+        activeDotColor: AppColors.kPrimaryVoiletColor,
+        dotColor: AppColors.kvveryViloetlightColor,
+      ),
     );
   }
 }

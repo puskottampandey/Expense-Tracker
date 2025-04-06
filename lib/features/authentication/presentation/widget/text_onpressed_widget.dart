@@ -22,10 +22,17 @@ class TextWithOnPressed extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: staticText,
-          style: textTheme.labelSmall?.copyWith(
+          style: textTheme.bodySmall?.copyWith(
             color: AppColors.kverylightDarkColor,
           ),
-          children: [TextSpan(text: navigateText, style: textTheme.labelSmall)],
+          children: [
+            TextSpan(
+              text: navigateText,
+              style: textTheme.bodySmall!.copyWith(
+                color: AppColors.kPrimaryVoiletColor,
+              ),
+            ),
+          ],
         ),
       ),
     );

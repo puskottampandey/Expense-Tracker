@@ -14,7 +14,7 @@ class TextTapped extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          Text(text, style: textTheme.labelSmall),
+          Text(text, style: textTheme.bodySmall),
           SizedBox(height: 10.h),
         ],
       ),

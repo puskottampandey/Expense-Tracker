@@ -159,9 +159,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         fillColor: AppColors.backgroundColor,
         filled: widget.isFilled,
         hintText: widget.title,
-        hintStyle: textTheme.titleMedium?.copyWith(
-          color: AppColors.kverylightDarkColor,
-        ),
+        hintStyle: textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400),
         errorStyle: textTheme.titleSmall?.copyWith(
           color: AppColors.kPrimaryRedColor,
         ),

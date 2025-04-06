@@ -28,20 +28,20 @@ class CustomRoundButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 0.h),
         child: Material(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(32.r),
+          borderRadius: BorderRadius.circular(16.r),
           child: InkWell(
-            borderRadius: BorderRadius.circular(32.r),
+            borderRadius: BorderRadius.circular(16.r),
             onTap: isLoading ? null : onPressed,
             child: Container(
               height: 40.h,
               padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 14.w),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(32.r),
+                borderRadius: BorderRadius.circular(16.r),
               ),
               child: Center(
                 child: Text(
                   title,
-                  style: textTheme.labelLarge!.copyWith(color: textColor),
+                  style: textTheme.bodyMedium!.copyWith(color: textColor),
                 ),
               ),
             ),
