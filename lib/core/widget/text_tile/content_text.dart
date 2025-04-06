@@ -17,7 +17,7 @@ class ContentText extends StatelessWidget {
     final textTheme = theme.textTheme;
     return Column(
       children: [
-        Text(title, style: textTheme.labelSmall!.copyWith(color: color)),
+        Text(title, style: textTheme.labelLarge!.copyWith(color: color)),
         SizedBox(height: 10.h),
       ],
     );

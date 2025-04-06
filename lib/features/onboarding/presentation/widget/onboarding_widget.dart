@@ -31,14 +31,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
             builder: (context, state) {
               return Stack(
                 children: [
-                  TextAlignRight(
-                    alignText: "Skip",
-                    onTap: () {
-                      context.push(Routes.loginScreen);
-                    },
-                  ),
                   Column(
                     children: [
+                      TextAlignRight(
+                        alignText: "Skip",
+                        onTap: () {
+                          context.push(Routes.loginScreen);
+                        },
+                      ),
                       // pageview
                       PageViewWidget(
                         controller: controller,

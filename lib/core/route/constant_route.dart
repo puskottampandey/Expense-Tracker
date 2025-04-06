@@ -3,5 +3,7 @@ class Routes {
   static const onboardingScreen = "/onboardingScreen";
   static const loginScreen = "/loginScreen";
   static const signUpScreen = "/signUpScreen";
-  
+  static const verificationScreen = "/verificationScreen";
+  static const forgotPasswordScreen = "/forgotPasswordScreen";
+  static const confrimScreen = "/confirmScreen";
 }

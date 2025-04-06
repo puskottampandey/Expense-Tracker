@@ -33,7 +33,7 @@ class PageViewWidget extends StatelessWidget {
               Image.asset(data.image),
               Text(
                 data.title,
-                style: textTheme.bodyLarge,
+                style: textTheme.displaySmall,
                 maxLines: 2,
                 textAlign: TextAlign.center,
               ),
@@ -41,7 +41,7 @@ class PageViewWidget extends StatelessWidget {
               Text(
                 data.des,
                 style: textTheme.bodySmall!.copyWith(
-                  color: AppColors.kverylightDarkColor,
+                  color: AppColors.kPrimarylightColor,
                 ),
                 maxLines: 2,
                 textAlign: TextAlign.center,

@@ -41,7 +41,7 @@ class CustomRoundButton extends StatelessWidget {
               child: Center(
                 child: Text(
                   title,
-                  style: textTheme.bodyMedium!.copyWith(color: textColor),
+                  style: textTheme.bodySmall!.copyWith(color: textColor),
                 ),
               ),
             ),

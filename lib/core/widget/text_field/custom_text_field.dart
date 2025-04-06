@@ -134,7 +134,7 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     return TextFormField(
-      style: textTheme.titleMedium?.copyWith(
+      style: textTheme.labelLarge?.copyWith(
         color: AppColors.kseconadaryDarkColor,
       ),
       cursorColor: AppColors.kPrimaryVoiletColor,
@@ -159,8 +159,10 @@ class _ReusableFormFieldState extends State<ReusableFormField> {
         fillColor: AppColors.backgroundColor,
         filled: widget.isFilled,
         hintText: widget.title,
-        hintStyle: textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w400),
-        errorStyle: textTheme.titleSmall?.copyWith(
+        hintStyle: textTheme.labelLarge!.copyWith(
+          color: AppColors.kPrimarylightColor,
+        ),
+        errorStyle: textTheme.labelLarge?.copyWith(
           color: AppColors.kPrimaryRedColor,
         ),
         focusedErrorBorder: OutlineInputBorder(

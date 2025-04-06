@@ -88,7 +88,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                 ),
                 SizedBox(height: 10.h),
                 TextWithOnPressed(
-                  staticText: "Don't have an account yet? ",
+                  staticText: "Already have an account? ",
                   navigateText: "Login",
                   onTap: () {
                     context.push(Routes.loginScreen);

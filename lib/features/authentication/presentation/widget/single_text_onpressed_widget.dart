@@ -1,3 +1,4 @@
+import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,7 +15,12 @@ class TextTapped extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          Text(text, style: textTheme.bodySmall),
+          Text(
+            text,
+            style: textTheme.bodySmall!.copyWith(
+              color: AppColors.kPrimaryVoiletColor,
+            ),
+          ),
           SizedBox(height: 10.h),
         ],
       ),

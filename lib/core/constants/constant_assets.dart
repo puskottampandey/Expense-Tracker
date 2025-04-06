@@ -6,7 +6,7 @@ class Assets {
   static String errorPage = "$mainurl/error.png";
   static String googleLogo = "$mainurl/google.png";
   static String onboardingThird = "$mainurl/llustration.svg";
-  static String confirmLogo = "$mainurl/Rectangle 101.svg";
+  static String confirmLogo = "$mainurl/Ilustration.png";
   static String successLogo = "$mainurl/checked.png";
   static String profileImage = "$mainurl/profile-picture.png";
   static String incomeLogo = "$mainurl/income.svg";

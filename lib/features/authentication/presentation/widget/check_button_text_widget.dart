@@ -22,7 +22,7 @@ class CheckButtonText extends StatelessWidget {
         BlocBuilder<CheckBoxBloc, bool>(
           builder: (context, state) {
             return Transform.scale(
-              scale: 1.2,
+              scale: 1.0,
               child: Checkbox(
                 visualDensity: VisualDensity.compact,
                 shape: RoundedRectangleBorder(
@@ -42,9 +42,16 @@ class CheckButtonText extends StatelessWidget {
             maxLines: 2,
             text: TextSpan(
               text: text,
-              style: textTheme.labelLarge,
+              style: textTheme.labelSmall!.copyWith(
+                color: AppColors.kPrimaryDarkColor,
+              ),
               children: [
-                TextSpan(text: policytext, style: textTheme.labelLarge),
+                TextSpan(
+                  text: policytext,
+                  style: textTheme.labelSmall!.copyWith(
+                    color: AppColors.kPrimaryVoiletColor,
+                  ),
+                ),
               ],
             ),
           ),

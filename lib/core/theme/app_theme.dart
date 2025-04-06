@@ -44,14 +44,14 @@ class AppTheme {
       displayLarge: TextStyle(
         color: AppColors.kPrimaryDarkColor,
         fontWeight: FontWeight.bold,
-        fontSize: 30.sp,
+        fontSize: 28.sp,
         height: 1.5,
         letterSpacing: 0.5,
       ),
       displayMedium: TextStyle(
         color: AppColors.kPrimaryDarkColor,
         fontWeight: FontWeight.w600,
-        fontSize: 28.sp,
+        fontSize: 26.sp,
         height: 1.4,
         letterSpacing: 0.5,
       ),
@@ -77,8 +77,8 @@ class AppTheme {
         letterSpacing: 0.5,
       ),
       bodySmall: TextStyle(
-        color: AppColors.kPrimarylightColor,
-        fontWeight: FontWeight.w500,
+        color: AppColors.kPrimaryDarkColor,
+        fontWeight: FontWeight.w600,
         fontSize: 16.sp,
         height: 1.4,
         letterSpacing: 0.5,
@@ -88,14 +88,12 @@ class AppTheme {
         fontWeight: FontWeight.w500,
         fontSize: 14.sp,
         height: 1.3,
-        letterSpacing: 0.5,
       ),
       labelSmall: TextStyle(
-        color: AppColors.kPrimaryVoiletColor,
+        color: AppColors.kPrimaryDarkColor,
         fontWeight: FontWeight.w500,
         fontSize: 12.sp,
         height: 1.4,
-        letterSpacing: 0.5,
       ),
     ),
   );

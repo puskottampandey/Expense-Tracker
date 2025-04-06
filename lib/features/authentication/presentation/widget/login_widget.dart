@@ -64,10 +64,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                   },
                 ),
                 SizedBox(height: 10.h),
-                TextTapped(text: "Forgot Password", onTap: () {}),
+                TextTapped(
+                  text: "Forgot Password?",
+                  onTap: () {
+                    context.push(Routes.forgotPasswordScreen);
+                  },
+                ),
                 TextWithOnPressed(
-                  staticText: "Don't have account yet? ",
-                  navigateText: "SignUp",
+                  staticText: "Don't have account yet?",
+                  navigateText: " Sign Up",
                   onTap: () {
                     context.push(Routes.signUpScreen);
                   },
@@ -90,6 +95,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     setState(() {
       _isAlreadyValidate = true;
     });
+    context.push(Routes.verificationScreen);
     if (_formkeyLogin.currentState!.validate()) {
       FocusScope.of(context).unfocus();
     }
