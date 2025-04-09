@@ -3,6 +3,7 @@ import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/confirm_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/forgot_password_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/login_screen.dart';
+import 'package:expensetracker/features/authentication/presentation/screen/reset_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/signup_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/verification_screen.dart';
 import 'package:expensetracker/features/onboarding/presentation/screen/onboarding_screen.dart';
@@ -37,6 +38,10 @@ class AppRouter {
       GoRoute(
         path: Routes.confrimScreen,
         builder: (context, state) => ConfirmScreen(),
+      ),
+      GoRoute(
+        path: Routes.resetScreen,
+        builder: (context, state) => ResetScreen(),
       ),
     ],
   );

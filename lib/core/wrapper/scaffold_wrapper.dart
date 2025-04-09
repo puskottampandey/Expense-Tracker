@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ScaffoldWrapper extends StatelessWidget {
-  final Widget body;
   final String title;
+  final Widget body;
+
   const ScaffoldWrapper({super.key, required this.body, required this.title});
 
   @override
@@ -30,7 +31,7 @@ class ScaffoldWrapper extends StatelessWidget {
           //     child: Icon(Icons.arrow_back_ios),
           //   ),
           // ),
-          title: Text(title, style: textTheme.bodyMedium),
+          title: Text(title, style: textTheme.bodySmall),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),

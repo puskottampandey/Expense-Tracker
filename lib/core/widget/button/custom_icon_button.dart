@@ -44,7 +44,7 @@ class CustomIconButton extends StatelessWidget {
                   Image.asset(Assets.googleLogo, height: 18.h),
                   Text(
                     title,
-                    style: textTheme.bodySmall!.copyWith(color: textColor),
+                    style: textTheme.labelLarge!.copyWith(color: textColor),
                   ),
                 ],
               ),

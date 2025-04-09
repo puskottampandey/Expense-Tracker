@@ -1,8 +1,10 @@
 import 'package:expensetracker/core/constants/constant_assets.dart';
+import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/core/widget/button/custom_round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ConfirmWidget extends StatelessWidget {
   const ConfirmWidget({super.key});
@@ -31,7 +33,12 @@ class ConfirmWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 50.h),
-              CustomRoundButton(title: "Back to Login", onPressed: () {}),
+              CustomRoundButton(
+                title: "Continue",
+                onPressed: () {
+                  context.go(Routes.resetScreen);
+                },
+              ),
             ],
           ),
         ),

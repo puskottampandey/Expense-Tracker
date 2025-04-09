@@ -34,12 +34,12 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 Text(
                   "Don’t worry.",
                   textAlign: TextAlign.start,
-                  style: textTheme.bodyLarge!,
+                  style: textTheme.bodyMedium!,
                 ),
                 Text(
                   "Enter your email and we’ll send you a link to reset your password.",
                   maxLines: 3,
-                  style: textTheme.bodyLarge,
+                  style: textTheme.bodyMedium,
                 ),
                 SizedBox(height: 20.h),
                 ReusableFormField(

@@ -17,7 +17,7 @@ class TextTapped extends StatelessWidget {
         children: [
           Text(
             text,
-            style: textTheme.bodySmall!.copyWith(
+            style: textTheme.labelLarge!.copyWith(
               color: AppColors.kPrimaryVoiletColor,
             ),
           ),

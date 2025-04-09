@@ -28,7 +28,10 @@ class TextWithOnPressed extends StatelessWidget {
           children: [
             TextSpan(
               text: navigateText,
+
               style: textTheme.labelLarge!.copyWith(
+                decoration: TextDecoration.underline,
+                decorationColor: AppColors.kPrimaryVoiletColor,
                 color: AppColors.kPrimaryVoiletColor,
               ),
             ),

@@ -5,6 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     
+    
     {
       "name": "expense",
       "request": "launch",
@@ -24,7 +25,7 @@
     },
 
     {
-      "name": "Expense [release]",
+      "name": "expense [release]",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release",
@@ -32,7 +33,7 @@
       "args": ["--flavor", "prod"]
     },
     {
-      "name": "Expense [dev]",
+      "name": "expense [dev]",
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
