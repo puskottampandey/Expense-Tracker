@@ -1,5 +1,5 @@
 import 'package:expensetracker/features/authentication/presentation/bloc/check_box_bloc.dart';
-import 'package:expensetracker/features/authentication/presentation/widget/signup_widget.dart';
+import 'package:expensetracker/features/authentication/presentation/widget/sign_up_widget/signup_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
