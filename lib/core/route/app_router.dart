@@ -3,6 +3,7 @@ import 'package:expensetracker/core/route/constant_route.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/confirm_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/forgot_password_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/login_screen.dart';
+import 'package:expensetracker/features/authentication/presentation/screen/pin_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/reset_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/signup_screen.dart';
 import 'package:expensetracker/features/authentication/presentation/screen/verification_screen.dart';
@@ -43,6 +44,7 @@ class AppRouter {
         path: Routes.resetScreen,
         builder: (context, state) => ResetScreen(),
       ),
+      GoRoute(path: Routes.pinScreen, builder: (context, state) => PinScreen()),
     ],
   );
 }

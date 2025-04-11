@@ -7,10 +7,16 @@ class VerificationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     return ScaffoldWrapper(
       title: "Verification",
       body: ListView(
-        children: [CustomRoundButton(title: "Verify", onPressed: () {})],
+        children: [
+          Text("Enter your Verification Code", style: textTheme.bodyLarge),
+
+          CustomRoundButton(title: "Verify", onPressed: () {}),
+        ],
       ),
     );
   }

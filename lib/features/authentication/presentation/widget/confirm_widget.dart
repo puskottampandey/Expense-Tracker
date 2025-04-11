@@ -36,7 +36,7 @@ class ConfirmWidget extends StatelessWidget {
               CustomRoundButton(
                 title: "Continue",
                 onPressed: () {
-                  context.go(Routes.resetScreen);
+                  context.push(Routes.resetScreen);
                 },
               ),
             ],

@@ -3,6 +3,7 @@ import 'package:expensetracker/core/widget/button/custom_round_button.dart';
 import 'package:expensetracker/core/widget/text_field/custom_text_field.dart';
 import 'package:expensetracker/core/wrapper/scaffold_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ResetWidget extends StatefulWidget {
   const ResetWidget({super.key});
@@ -27,6 +28,7 @@ class _ResetWidgetState extends State<ResetWidget> {
             key: _formkeyReset,
             child: Column(
               children: [
+                SizedBox(height: 40.h),
                 ReusableFormField(
                   title: "New Password",
                   onChanged: (val) {

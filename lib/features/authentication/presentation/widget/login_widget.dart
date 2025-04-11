@@ -95,7 +95,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     setState(() {
       _isAlreadyValidate = true;
     });
-    context.push(Routes.verificationScreen);
+    context.push(Routes.pinScreen);
     if (_formkeyLogin.currentState!.validate()) {
       FocusScope.of(context).unfocus();
     }
