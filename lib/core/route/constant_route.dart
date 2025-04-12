@@ -8,4 +8,5 @@ class Routes {
   static const confrimScreen = "/confirmScreen";
   static const resetScreen = "/resetScreen";
   static const pinScreen = "/pinScreen";
+  static const mainScreen = "/mainScreen";
 }

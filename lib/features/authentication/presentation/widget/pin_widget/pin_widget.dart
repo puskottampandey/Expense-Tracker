@@ -3,8 +3,6 @@ import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:expensetracker/core/widget/loader/loading_overlay.dart';
 import 'package:expensetracker/features/authentication/presentation/bloc/pin_bloc.dart';
 import 'package:expensetracker/features/authentication/presentation/widget/pin_widget/pinput_widget.dart';
-import 'package:expensetracker/features/authentication/presentation/widget/pin_widget/text_row_deletewrap.dart';
-import 'package:expensetracker/features/authentication/presentation/widget/pin_widget/text_row_numberwrap.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
