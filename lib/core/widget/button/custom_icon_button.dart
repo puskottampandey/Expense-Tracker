@@ -1,79 +1,53 @@
+import 'package:expensetracker/core/constants/constant_assets.dart';
+import 'package:expensetracker/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class CustomIconButton extends StatelessWidget {
-  final IconData icon;
-  final void Function()? onPressed;
-  final double borderRadius;
-  final Color? backgroundColor;
-  final Color? iconColor;
-  final double verticalPadding;
-  final double horizontalPadding;
-  final double iconSize;
-  final bool shadow;
-  final bool hasBorderOutline;
-  final double outlineBorderWidth;
+  final String title;
+  final Function()? onPressed;
+  final Color backgroundColor;
+  final Color textColor;
 
-  final Color? gradientPrimaryColor;
-  final Color? gradientSecondaryColor;
-  final Color? outLineColor;
-
+  final bool isLoading;
   const CustomIconButton({
     super.key,
-    required this.icon,
+    required this.title,
     this.onPressed,
-    this.borderRadius = 8,
-    this.backgroundColor,
-    this.iconColor,
-    this.horizontalPadding = 8,
-    this.verticalPadding = 8,
-    this.iconSize = 24,
-    this.shadow = true,
-    this.hasBorderOutline = false,
-    this.outlineBorderWidth = 2,
-    this.gradientPrimaryColor,
-    this.gradientSecondaryColor,
-    this.outLineColor,
+    this.isLoading = false,
+    this.backgroundColor = AppColors.backgroundColor,
+    this.textColor = AppColors.kseconadaryDarkColor,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: horizontalPadding, vertical: verticalPadding),
-      child: Material(
-        elevation: 0,
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: InkWell(
-          onTap: onPressed,
-          borderRadius: BorderRadius.circular(borderRadius),
-          child: Container(
-            margin: EdgeInsets.all(0),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              gradient: gradientSecondaryColor != null
-                  ? LinearGradient(
-                      colors: [
-                        gradientPrimaryColor ??
-                            backgroundColor ??
-                            theme.primaryColor,
-                        gradientSecondaryColor!,
-                      ],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    )
-                  : null,
-              borderRadius: BorderRadius.circular(borderRadius),
-              border: hasBorderOutline
-                  ? Border.all(
-                      width: outlineBorderWidth,
-                      color: outLineColor ?? iconColor ?? theme.primaryColor)
-                  : null,
-              color: backgroundColor,
-            ),
-            child: Icon(
-              icon,
-              color: iconColor,
-              size: iconSize,
+    final textTheme = theme.textTheme;
+    return SizedBox(
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 0.h),
+        child: Material(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(32.r),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(32.r),
+            onTap: isLoading ? null : onPressed,
+            child: Container(
+              height: 40.h,
+              padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 14.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(32.r),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(Assets.googleLogo, height: 18.h),
+                  Text(
+                    title,
+                    style: textTheme.labelLarge!.copyWith(color: textColor),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

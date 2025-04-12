@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppColors {
   static final kPrimaryDarkColor = Color(0xff0D0E0F);
-  static final kseconadaryDarkColor = Color(0xff161719);
+  static const kseconadaryDarkColor = Color(0xff161719);
   static final klightDarkColor = Color(0xff464A4D);
   static final kverylightDarkColor = Color(0xff7A7E80);
 
+  static final kPrimarylightColor = Color(0xff91919F);
   static final kseconadarylightColor = Color(0xffE3E5E5);
   static final kwhitelightColor = Color(0xffF1F1FA);
   static final kverywhitelightColor = Color(0xffFCFCFC);
@@ -44,7 +45,7 @@ class AppColors {
   static final klightBlueColor = Color(0xff8AC0FF);
   static final kverylightBlueColor = Color(0xff8AC0FF);
   static final kvvlightBlueColor = Color(0xffBDDCFF);
-  static final backgroundColor = Color(0xffE5E5E5);
+  static const backgroundColor = Color(0xffF1F1FA);
   static final containergradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

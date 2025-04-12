@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PageViewWidget extends StatelessWidget {
-  void Function(int)? onPageChanged;
+  final Function(int)? onPageChanged;
   final PageController controller;
-  PageViewWidget({
+  const PageViewWidget({
     super.key,
     required this.onPageChanged,
     required this.controller,
@@ -33,15 +33,15 @@ class PageViewWidget extends StatelessWidget {
               Image.asset(data.image),
               Text(
                 data.title,
-                style: textTheme.bodyLarge!.copyWith(),
+                style: textTheme.displaySmall,
                 maxLines: 2,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 10.h),
               Text(
-                data.des.toString(),
-                style: textTheme.labelLarge!.copyWith(
-                  color: AppColors.kverylightDarkColor,
+                data.des,
+                style: textTheme.bodySmall!.copyWith(
+                  color: AppColors.kPrimarylightColor,
                 ),
                 maxLines: 2,
                 textAlign: TextAlign.center,

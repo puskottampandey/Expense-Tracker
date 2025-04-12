@@ -1,53 +1,44 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    
+    
+    {
+      "name": "expense",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "expense (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "expense (release mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    },
 
-        
-        
-        
-        {
-            "name": "expense",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "expense (profile mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "expense (release mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        },
-
-        {
-            "name": "Expense [release]",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release",
-            "program": "lib/main.dart",
-            "args": [
-                "--flavor",
-                "prod"
-            ]
-        },
-        {
-            "name": "Expense [dev]",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "debug",
-            "program": "lib/main_dev.dart",
-            "args": [
-                "--flavor",
-                "prod"
-            ]
-        },
-    ]
+    {
+      "name": "expense [release]",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "args": ["--flavor", "prod"]
+    },
+    {
+      "name": "expense [dev]",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "lib/main_dev.dart",
+      "args": ["--flavor", "prod"]
+    }
+  ]
 }
