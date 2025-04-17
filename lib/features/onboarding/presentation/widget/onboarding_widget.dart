@@ -42,8 +42,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                       // pageview
                       PageViewWidget(
                         controller: controller,
-                        onPageChanged: (val) {
-                          context.read<OnboardingBloc>().currentPage(val);
+                        onPageChanged: (val) async {
+                          await context.read<OnboardingBloc>().currentPage(val);
                         },
                       ),
                       SizedBox(height: 10.h),

@@ -41,12 +41,11 @@ class _UpdateWrapperState extends State<UpdateWrapper> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(milliseconds: 500)).whenComplete(() {
+    Future.delayed(const Duration(milliseconds: 500)).whenComplete(() async {
       if (mounted) {
-        _checkInApp(context);
+        await _checkInApp(context);
       }
     });
-
     super.initState();
   }
 

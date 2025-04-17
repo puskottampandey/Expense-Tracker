@@ -20,7 +20,7 @@ class PageViewWidget extends StatelessWidget {
     return Expanded(
       child: PageView.builder(
         controller: controller,
-        onPageChanged: (val) {
+        onPageChanged: (val) async{
           onPageChanged?.call(val);
         },
         itemCount: onboarding.length,

@@ -17,9 +17,9 @@ class _SplashWidgetState extends State<SplashWidget> {
   }
 
   @override
-  void initState() {
+  void initState() async {
     super.initState();
-    Future.delayed(const Duration(seconds: 2)).then((value) {
+    await Future.delayed(const Duration(seconds: 2)).then((value) async {
       _navigator(Routes.onboardingScreen);
     });
   }

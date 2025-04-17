@@ -136,9 +136,7 @@ class AppLoader extends StatelessWidget {
             ),
           ),
         ),
-        Center(
-          child: Image.asset(Assets.googleLogo, width: 24.h, height: 24.h),
-        ),
+        Center(child: Text("E", style: textTheme.bodySmall!)),
       ],
     );
   }

@@ -46,10 +46,10 @@ class AppRouter {
         builder: (context, state) => ResetScreen(),
       ),
       GoRoute(path: Routes.pinScreen, builder: (context, state) => PinScreen()),
-      GoRoute(
-        path: Routes.mainScreen,
-        builder: (context, state) => MainScreen(),
-      ),
+      // GoRoute(
+      //   path: Routes.mainScreen,
+      //   builder: (context, state) => MainScreen(),
+      // ),
     ],
   );
 }

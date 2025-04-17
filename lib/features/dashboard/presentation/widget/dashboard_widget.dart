@@ -144,7 +144,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  listday[currentIndex],
+                  "",
                   style: textTheme.bodyLarge!.copyWith(
                     fontSize: AppColors.title3,
                     color: AppColors.kPrimaryDarkColor,
@@ -154,10 +154,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
                 SizedBox(height: 8.h),
                 lineChart(),
                 SizedBox(height: 8.h),
-                SizedBox(
-                  height: 40.h,
-                  child: listContainer(listday, ref, currentIndex),
-                ),
+                SizedBox(height: 40.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -276,9 +273,7 @@ class _DashboardWidgetState extends State<DashboardWidget> {
       itemCount: listday.length,
       itemBuilder: (BuildContext context, index) {
         return GestureDetector(
-          onTap: () {
-            ref.read(changedindex.notifier).state = index;
-          },
+          onTap: () {},
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 16.w),
             margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
